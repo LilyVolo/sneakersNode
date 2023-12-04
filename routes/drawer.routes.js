@@ -53,28 +53,21 @@ router.post("/addToDrawer",  (req, res, next) => {
     }
 });
 
-  // router.delete('/:idItem', async (req, res, next) => {
-  //   console.log('the other one')
-  //   const idItem = req.params.idItem;
-  //   console.log(idItem)
-  //   if (!idItem) {
-  //     return res.status(400).json({ error: "Missing notesId parameter" });
-  //   }
 
-  //   try {
-  //     await Drawer.findByIdAndDelete(idItem)
-  //     .then((resp) => {
-  //       console.log("Item successfully deleted");
-  //       res.status(204).json(); //Send back only status code 204 indicating that resource is deleted
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error while deleting item", error);
-  //       res.status(500).json({ error: "Deleting nitem failed" });
-  //     });
-  //   } catch {
-  //     next(error)
-  //   }
+router.put("/clearDrawer", async (req, res, next) => {
+  try {
+    console.log('Attempting to clear drawer...');
     
-  // });
+    // Удаляем все документы из коллекции Drawer
+    const result = await Drawer.deleteMany({});
+
+    console.log('Drawer cleared successfully:', result);
+    res.status(200).json(result);
+  } catch (error) {
+    console.error('Error clearing drawer:', error);
+    next(error);
+  }
+});
+
 
 module.exports = router;
