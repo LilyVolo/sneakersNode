@@ -10,5 +10,7 @@ const router = express.Router();
 router.use("/items", require("./items.routes"))
 router.use("/drawer", require("./drawer.routes"))
 router.use("/favourites", require("./favourites.routes"))
+router.use("/orders", require("./orders.routes"))
+
 // router.use("/plans",isAuthenticated, require("./plans.routes"))
 module.exports = router;
