@@ -3,16 +3,16 @@ const mangoose = require('mongoose');
 const router = require("express").Router()
 const Item = require("../models/Item.model");
 
-// router.get("/", async (req, res, next) => {
-//     try {
-//       const allitems = await Order.find()
+router.get("/", async (req, res, next) => {
+ try {
+  const allitems = await Order.find()
 
-// 		res.json(allitems)
-//         console.log(allitems)
-// 	} catch (error) {
-// 		console.log(error)
-// 	}
-// });
+	res.json(allitems)
+      console.log(allitems)
+	} catch (error) {
+ 		console.log(error)
+	}
+ });
 
 router.post("/addTheOrder",  (req, res, next) => {
     const {
